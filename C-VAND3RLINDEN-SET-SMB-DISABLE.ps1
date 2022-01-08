@@ -1,8 +1,20 @@
-#Connect EXO
-. .\Login-EXO.ps1
+#By default a shared mailbox is an active account, you can disabled a SMB without the loss of functioning. This script will automate the proccess. 
 
-#Connect Azure AD
-. .\Login-AzureAD.ps1
+##Login in EXO##
+$Credentials = Get-AutomationPSCredential -Name 'C-VAND3RLINDEN-AUTOMATION'
+# import the EXO module
+Import-Module ExchangeOnlineManagement
+# Connect to ExchangeOnline
+Connect-ExchangeOnline -Credential $Credentials
+##End Login EXO##
+
+##Login Azure AD##
+$Credentials = Get-AutomationPSCredential -Name 'C-VAND3RLINDEN-AUTOMATION'
+# import AzureAD module
+Import-Module AzureAD
+# Connect to AzureAD
+Connect-AzureAD -Credential $Credentials
+##End Login Azure AD##
 
 #Get all shared mailboxes
 $SMBS = Get-Mailbox -RecipientTypeDetails SharedMailbox -ResultSize Unlimited
