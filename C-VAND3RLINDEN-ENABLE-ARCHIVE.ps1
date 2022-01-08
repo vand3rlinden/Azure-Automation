@@ -1,5 +1,10 @@
-#Login in EXO
-. .\Login-EXO.ps1
+##Login in EXO##
+$Credentials = Get-AutomationPSCredential -Name 'C-VAND3RLINDEN-AUTOMATION'
+# import the EXO module
+Import-Module ExchangeOnlineManagement
+# Connect to ExchangeOnline
+Connect-ExchangeOnline -Credential $Credentials
+##End Login EXO##
 
 #Enable Archive
 Get-Mailbox -Filter {ArchiveStatus -Eq "None" -AND RecipientTypeDetails -eq "UserMailbox"} | Enable-Mailbox -Archive
