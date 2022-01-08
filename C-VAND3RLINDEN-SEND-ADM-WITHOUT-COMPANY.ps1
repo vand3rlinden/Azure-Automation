@@ -1,4 +1,4 @@
-#This script has been made if an attribute is missing from an object and send a ticket to the servicedesk to fix it. You can tweak this script for your needs.
+#This script has been made if an attribute is missing from an user object, and if missing it sends a ticket to the servicedesk. You can tweak this script for your needs.
 
 ##Login in EXO##
 $Credentials = Get-AutomationPSCredential -Name 'C-VAND3RLINDEN-AUTOMATION'
