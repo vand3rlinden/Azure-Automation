@@ -1,5 +1,12 @@
-#Connect Azure AD
-. .\Login-AzureAD.ps1
+#This script can be used to autofill an attribute based on displayname
+
+##Login Azure AD##
+$Credentials = Get-AutomationPSCredential -Name 'C-VAND3RLINDEN-AUTOMATION'
+# import AzureAD module
+Import-Module AzureAD
+# Connect to AzureAD
+Connect-AzureAD -Credential $Credentials
+##End Login EXO##
 
 ###CompanyName: VAND3RLINDEN###
 #Get All Azure AD Users that have a DisplayName like
