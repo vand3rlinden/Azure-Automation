@@ -1,3 +1,6 @@
+#This script enabled the archive and set the default RetentionPolicy to 'Default MRM Policy'. This Retention RetentionPolicy has tag: 
+##"Recoverable Items 14 days move to archive" to avoid that the "Recoverable Items" folder reached the quota of 30GB.
+
 ##Login in EXO##
 $Credentials = Get-AutomationPSCredential -Name 'C-VAND3RLINDEN-AUTOMATION'
 # import the EXO module
