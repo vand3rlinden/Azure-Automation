@@ -1,5 +1,12 @@
-#Connect to exchange online
-. .\Login-EXO.ps1
+#This script sets reviewer access for the default user (open calenders)
+
+##Login in EXO##
+$Credentials = Get-AutomationPSCredential -Name 'C-VAND3RLINDEN-AUTOMATION'
+# import the EXO module
+Import-Module ExchangeOnlineManagement
+# Connect to ExchangeOnline
+Connect-ExchangeOnline -Credential $Credentials
+##End Login EXO##
 
 #Set Access Rights
 $Accessrights = "Reviewer"
