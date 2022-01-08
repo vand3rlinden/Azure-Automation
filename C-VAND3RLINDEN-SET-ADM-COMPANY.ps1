@@ -6,7 +6,7 @@ $Credentials = Get-AutomationPSCredential -Name 'C-VAND3RLINDEN-AUTOMATION'
 Import-Module AzureAD
 # Connect to AzureAD
 Connect-AzureAD -Credential $Credentials
-##End Login EXO##
+##End Login Azure AD##
 
 ###CompanyName: VAND3RLINDEN###
 #Get All Azure AD Users that have a DisplayName like
