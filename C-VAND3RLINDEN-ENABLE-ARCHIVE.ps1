@@ -17,5 +17,5 @@ $defaultpolicy = Get-Mailbox -ResultSize unlimited | Select-Object RetentionPoli
 
 foreach($user in $defaultpolicy){
 
-if ($user.RetentionPolicy -eq "Default MRM Policy") {Write-Host alles is goed} else {Set-Mailbox -Identity $user.Name –RetentionPolicy "Default MRM Policy"}
+if ($user.RetentionPolicy -eq "Default MRM Policy") {Write-Host Everything looks okay} else {Set-Mailbox -Identity $user.Name –RetentionPolicy "Default MRM Policy"}
 }
