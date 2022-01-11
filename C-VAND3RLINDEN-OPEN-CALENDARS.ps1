@@ -12,7 +12,7 @@ Connect-ExchangeOnline -Credential $Credentials
 $Accessrights = "Reviewer"
 
 #Get all mailboxes
-Foreach ($mbx in (Get-Mailbox -ResultSize Unlimited | Where-Object {$_.Name -notin 'Name1', 'Name2'})) #Single user? Use '-notlike' instead of '-notin' !!Name = not UPN!!
+Foreach ($mbx in (Get-Mailbox -ResultSize Unlimited | Where-Object {$_.UserPrincipalName -notin 'Name1', 'Name2'})) #Single user? Use '-notlike' instead of '-notin'
 {
     #Get-MailboxFolderStatistics for FolderScope Calendar regarding the differents terms for all countries
     $Result = ((Get-MailboxFolderStatistics -identity $mbx.PrimarySmtpAddress -FolderScope Calendar | Where-Object {$_.foldertype -eq "Calendar"}).identity)
