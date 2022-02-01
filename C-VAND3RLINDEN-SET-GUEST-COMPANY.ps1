@@ -19,7 +19,7 @@ Foreach ($ContosoAdmin in $ContosoAdmins){
 #Get Company: Fabrikam
 $FabrikamAdmins = Get-AzureADUser -All $true | Where-Object {$_.UserPrincipalName -like "*fabrikam.com*"}
 
-#Set Company: DEV VAND3RLINDEN
+#Set Company: Fabrikam
 Foreach ($FabrikamAdmin in $FabrikamAdmins){
     Set-AzureADUser -ObjectId $Fabrikam.UserPrincipalname -CompanyName 'Fabrikam'
 }
