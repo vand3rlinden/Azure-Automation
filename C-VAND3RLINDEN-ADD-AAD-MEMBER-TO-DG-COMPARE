@@ -21,7 +21,7 @@ $DG = "DG1@vand3rlinden.nl"
 $DGMembers = (Get-DistributionGroupMember -identity $DG).PrimarySmtpAddress
 
 
-# SideIndicator: "<=" = NOT IN EXO DG - ADD AAD SG GROUPMEMBER THAT ARE NOT IN EXO DG
+# SideIndicator: "<=" = NOT IN EXO DG - ADD AAD SG GROUPMEMBER TO EXO DG THAT ARE NOT IN THE EXO DG
 Compare-Object -ReferenceObject $AzureADGroupMembers -DifferenceObject $DGMembers | Where-Object {$_.SideIndicator -eq "<="} | ForEach-Object {
     Add-DistributionGroupMember -Identity $DG -Member $_.InputObject -Confirm:$false
     Write-Host -ForegroundColor Green $_.InputObject "is added"
