@@ -1,7 +1,7 @@
 <#
 Script purpose: Having a mail group based on members of an AAD SG
 Unfortunately, Azure AD Security Groups cannot be mail-enabled groups. With Azure Automation you could do a query to the AAD SG and compare members with an EXO, so it will be up and down- scaled.
-- Having an EXO MSG, just don't fill the needs, because you cannot use this type of group within Access Packages or Enterprise Applications in Azure AD.
+- Having an EXO MSG, just don't fill the needs, because you cannot use this type of group within Access Packages in Azure AD.
 - Having an EXO DDL, also don't fill the needs, because the users in a requested AAD SG, do not have the same criteria to filter on. The only thing the users have in common, is the membership of an AAD SG.
 Requirement: You must have an EXO DL with atleast one member.
 #>
