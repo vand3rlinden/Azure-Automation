@@ -20,7 +20,7 @@ $AzureADGroupMembers = (Get-AzureADGroupMember -ObjectId $AzureADGroup -All $tru
 $DG = "DG1@vand3rlinden.nl"
 $DGMembers = (Get-DistributionGroupMember -identity $DG).PrimarySmtpAddress
 
-
+# About SideIndicator: The > sign tells where the member lives
 # SideIndicator: "<=" = NOT IN EXO DG - ADD AAD SG GROUPMEMBER TO EXO DG THAT ARE NOT IN THE EXO DG
 Compare-Object -ReferenceObject $AzureADGroupMembers -DifferenceObject $DGMembers | Where-Object {$_.SideIndicator -eq "<="} | ForEach-Object {
     Add-DistributionGroupMember -Identity $DG -Member $_.InputObject -Confirm:$false
