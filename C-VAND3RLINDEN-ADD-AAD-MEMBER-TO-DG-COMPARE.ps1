@@ -6,10 +6,10 @@ Unfortunately, Azure AD Security Groups cannot be mail-enabled groups. With Azur
 Requirement: You must have an EXO DL with atleast one member.
 #>
 
-#Connect EXO
+#Connect EXO with Runbook:
 . .\Login-EXO.ps1
 
-#Connect Azure AD
+#Connect Azure AD with Runbook:
 . .\Login-AzureAD.ps1
 
 #Azure AD: Get AAD SG
@@ -35,4 +35,5 @@ Compare-Object -ReferenceObject $AzureADGroupMembers -DifferenceObject $DGMember
 
 Write-Host -ForegroundColor Green "Script is finished!"
 
+#To prevent the script from failing with a maximum of 3 allowed connections to EXO.
 Get-PSSession | Remove-PSSession
