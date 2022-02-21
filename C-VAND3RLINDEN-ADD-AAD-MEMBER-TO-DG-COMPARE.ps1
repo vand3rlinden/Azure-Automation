@@ -18,7 +18,7 @@ $AzureADGroupMembers = (Get-AzureADGroupMember -ObjectId $AzureADGroup -All $tru
 
 #EXO: Get EXO DG (EXO DG group cannot be empty, please fill atleast with one member)
 $DG = "DG1@vand3rlinden.nl"
-$DGMembers = (Get-DistributionGroupMember -identity $DG).PrimarySmtpAddress
+$DGMembers = (Get-DistributionGroupMember -identity $DG -ResultSize Unlimited).PrimarySmtpAddress
 
 # About SideIndicator: The > sign tells where the member lives
 # SideIndicator: "<=" = NOT IN EXO DG - ADD AAD SG GROUPMEMBER TO EXO DG THAT ARE NOT IN THE EXO DG
