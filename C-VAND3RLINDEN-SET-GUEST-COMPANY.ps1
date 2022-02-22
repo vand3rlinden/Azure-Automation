@@ -1,12 +1,7 @@
 #This script can be used to autofill companyName attribute for known guest organizations based on guest domain in UserPrincipalName.
 
-##Login Azure AD##
-$Credentials = Get-AutomationPSCredential -Name 'C-VAND3RLINDEN-AUTOMATION'
-# import AzureAD module
-Import-Module AzureAD
-# Connect to AzureAD
-Connect-AzureAD -Credential $Credentials
-##End Login Azure AD##
+#Connect Azure AD with Runbook:
+. .\Login-AzureAD.ps1
 
 #Get Company: Contoso
 $ContosoAdmins = Get-AzureADUser -All $true | Where-Object {$_.UserPrincipalName -like "*contoso.com*"}

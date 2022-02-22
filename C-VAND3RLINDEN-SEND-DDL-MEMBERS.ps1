@@ -1,12 +1,7 @@
 #This script can be used to send monthly all the users of an all company DDL to your HR department
 
-##Login in EXO##
-$Credentials = Get-AutomationPSCredential -Name 'C-VAND3RLINDEN-AUTOMATION'
-# import the EXO module
-Import-Module ExchangeOnlineManagement
-# Connect to ExchangeOnline
-Connect-ExchangeOnline -Credential $Credentials
-##End Login EXO##
+#Connect EXO with Runbook:
+. .\Login-EXO.ps1
 
 # Get DDL
 $FTE = Get-DynamicDistributionGroup "everyone@domain.com"

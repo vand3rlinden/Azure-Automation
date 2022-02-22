@@ -1,12 +1,7 @@
 #This script has been made if an attribute is missing from an user object, and if missing it sends a ticket to the servicedesk. You can tweak this script for your needs.
 
-##Login Azure AD##
-$Credentials = Get-AutomationPSCredential -Name 'C-VAND3RLINDEN-AUTOMATION'
-# import AzureAD module
-Import-Module AzureAD
-# Connect to AzureAD
-Connect-AzureAD -Credential $Credentials
-##End Login Azure AD##
+#Connect Azure AD with Runbook:
+. .\Login-AzureAD.ps1
 
 # Get admin accounts without CompanyName
 $admins = Get-AzureADUser -All $true | Where-Object {($_.UserPrincipalName -like 'adm_*') -and ($_.CompanyName -like '')} | Select-Object Displayname,UserPrincipalName
