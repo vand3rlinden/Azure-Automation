@@ -3,6 +3,7 @@ This scripts can be used to manage Azure AD + Microsoft 365 and contains seperat
 
 # Runbook: Login-AzureAD.ps1
 
+```
 #Get Automation credentials
 
 if (!($CredAzureAD)) {
@@ -18,8 +19,10 @@ Import-Module AzureAD
 #Connect to AzureAD
 
 Connect-AzureAD -Credential $CredAzureAD
+```
 
 # Runbook: Login-EXO.ps1
+```
 #Get Automation credentials
 
 if (!($Cred365)) {
@@ -35,3 +38,4 @@ Import-Module ExchangeOnlineManagement
 #Connect to ExchangeOnline
 
 Connect-ExchangeOnline -Credential $Cred365
+```
