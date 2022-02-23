@@ -2,7 +2,6 @@
 This scripts can be used to manage Azure AD + Microsoft 365 and contains seperate runbooks to login to Azure AD or Exchange Online for using with Azure Automation.
 
 # Runbook: Login-AzureAD.ps1
-
 ```
 #Get Automation credentials
 
