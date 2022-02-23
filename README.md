@@ -1,5 +1,5 @@
 # Azure Automation
-This scripts can be used to manage Azure AD + Microsoft 365 and contains seperate runbooks to login to Azure AD or Exchange Online for using with Azure Automation.
+This scripts can be used to manage Azure AD + Microsoft 365 to automate some processes. Each script connect to seperate runbooks for login to Azure AD and Exchange Online with Azure Automation.
 
 # Runbook: Login-AzureAD.ps1
 ```
