@@ -13,7 +13,7 @@ if (!($CredAzureAD)) {
 
 Import-Module AzureAD
 
-# Connect to AzureAD
+#Connect to AzureAD
 
 Connect-AzureAD -Credential $CredAzureAD
 
