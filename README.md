@@ -1,7 +1,6 @@
 # Azure Automation
 This scripts can be used to manage Azure AD + Microsoft 365 for automate some processes. Each script connect to seperate runbooks for login to Azure AD and Exchange Online with Azure Automation.
 
-C-VAND3RLINDEN-OPEN-CALENDARS.ps1 is not written by myself but obtain this one from a colleague.
 
 # Runbook: Login-AzureAD.ps1
 ```
