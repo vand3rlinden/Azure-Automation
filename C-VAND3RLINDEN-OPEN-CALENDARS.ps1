@@ -1,18 +1,29 @@
 #This script sets reviewer access for the default user (open calenders)
 
-#Connect EXO with Runbook:
+#Connect to exchange online
 . .\Login-EXO.ps1
 
-#Set Access Rights
-$Accessrights = "Reviewer"
+#Get all mailboxes, but exclude some UPNs #Single user? Use '-notlike' instead of '-notin'
+$Mailboxes =  (Get-Mailbox -RecipientTypeDetails UserMailbox -ResultSize Unlimited | Where-Object {$_.UserPrincipalName -notin 'UPN1', 'UPN2'}).UserPrincipalName
+$AccessRights = "Reviewer"
+$Silent = "SilentlyContinue"
 
-#Get all mailboxes
-Foreach ($mbx in (Get-Mailbox -ResultSize Unlimited | Where-Object {$_.UserPrincipalName -notin 'Name1', 'Name2'})) #Single user? Use '-notlike' instead of '-notin'
-{
-    #Get-MailboxFolderStatistics for FolderScope Calendar regarding the differents terms for all countries
-    $Result = ((Get-MailboxFolderStatistics -identity $mbx.PrimarySmtpAddress -FolderScope Calendar | Where-Object {$_.foldertype -eq "Calendar"}).identity)
-    $Calendar = $result.insert($result.IndexOf('\'), ':')
-
-    #Set-MailboxFolderPermission all mailboxes on Accessrights
-    Set-MailboxFolderPermission -identity $Calendar -User Default -AccessRights $Accessrights -ErrorAction SilentlyContinue
+#Get all calenders with English name: Calendar
+ForEach ($Mailbox in $Mailboxes){
+    Set-MailboxFolderPermission -Identity "$($Mailbox):\Calendar" -User Default -AccessRights $AccessRights -ErrorAction $Silent -WarningAction $Silent
 }
+
+#Get all calenders with Dutch name: Agenda
+ForEach ($Mailbox in $Mailboxes){
+    Set-MailboxFolderPermission -Identity "$($Mailbox):\Agenda" -User Default -AccessRights $AccessRights -ErrorAction $Silent -WarningAction $Silent
+}
+
+<# You can add more languages
+#Get all calenders with XXXX name: XXXXX
+ForEach ($Mailbox in $Mailboxes){
+    Set-MailboxFolderPermission -Identity "$($Mailbox):\XXXX" -User Default -AccessRights $AccessRights -ErrorAction $Silent -WarningAction $Silent
+}
+#>
+
+#To prevent the script from failing with a maximum of 3 allowed connections to EXO.
+Get-PSSession | Remove-PSSession
