@@ -1,22 +1,27 @@
-#This script can be used to autofill companyName attribute for known guest organizations based on guest domain in UserPrincipalName.
+<#
+This script can be used to autofill companyName attribute for known guest organizations based on guest domain in UserPrincipalName.
+Guest users have an UPN like: name_domain.com#EXT#@domain.onmicrosoft.com
+#>
 
 #Connect Azure AD with Runbook:
 . .\Login-AzureAD.ps1
 
-#Get Company: Contoso
-$ContosoAdmins = Get-AzureADUser -All $true | Where-Object {$_.UserPrincipalName -like "*contoso.com*"}
+### CompanyName: Contoso
+#Get the users
+$Members = Get-AzureADUser -All $true | Where-Object {$_.UserPrincipalName -like "*contoso.com*"}
 
-#Set Company: Contoso
-Foreach ($ContosoAdmin in $ContosoAdmins){
-    Set-AzureADUser -ObjectId $ContosoAdmin.UserPrincipalname -CompanyName 'Contoso'
+#Set Company
+Foreach ($Member in $Members){
+    Set-AzureADUser -ObjectId $Member.UserPrincipalname -CompanyName 'Contoso'
 }
 
-#Get Company: Fabrikam
-$FabrikamAdmins = Get-AzureADUser -All $true | Where-Object {$_.UserPrincipalName -like "*fabrikam.com*"}
+### CompanyName: Fabrikam
+#Get the users
+$Members = Get-AzureADUser -All $true | Where-Object {$_.UserPrincipalName -like "*fabrikam.com*"}
 
-#Set Company: Fabrikam
-Foreach ($FabrikamAdmin in $FabrikamAdmins){
-    Set-AzureADUser -ObjectId $Fabrikam.UserPrincipalname -CompanyName 'Fabrikam'
+#Set Company
+Foreach ($Member in $Members){
+    Set-AzureADUser -ObjectId $Member.UserPrincipalname -CompanyName 'Fabrikam'
 }
 
 #Rollback CompanyName: Remove-AzureADUserExtension -ObjectId $VARIABLEXX.UserPrincipalname -ExtensionName "CompanyName"
