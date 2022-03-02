@@ -1,4 +1,4 @@
-#This script can be used to autofill an attribute based on displayname, for example your external admin accounts.
+#This script can be used to autofill an attribute based on displayname. For example, your external admin accounts.
 
 #Connect Azure AD with Runbook:
 . .\Login-AzureAD.ps1
