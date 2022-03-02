@@ -3,22 +3,22 @@
 #Connect Azure AD with Runbook:
 . .\Login-AzureAD.ps1
 
-###CompanyName: VAND3RLINDEN###
-#Get All Azure AD Users that have a DisplayName like
-$Members = Get-AzureADUser -All $true | Where-Object {$_.DisplayName -like "*(VAND3RLINDEN ADMIN)"}
+### CompanyName: Contoso
+#Get the users
+$Members = Get-AzureADUser -All $true | Where-Object {$_.DisplayName -like "*(Contoso Admin)"}
 
 #Set CompanyName
 ForEach ($Member in $Members){
-Set-AzureADUser -ObjectId $Member.UserPrincipalname -CompanyName 'VAND3RLINDEN'
+Set-AzureADUser -ObjectId $Member.UserPrincipalname -CompanyName 'Contoso'
 }
 
-###CompanyName: LIND3N###
-#Get All Azure AD Users that have a DisplayName like
-$Members = Get-AzureADUser -All $true | Where-Object {$_.DisplayName -like "*(LIND3N ADMIN)"}
+### CompanyName: Fabrikam
+#Get the users
+$Members = Get-AzureADUser -All $true | Where-Object {$_.DisplayName -like "*(Fabrikam Admin)"}
 
 #Set CompanyName
 ForEach ($Member in $Members){
-Set-AzureADUser -ObjectId $Member.UserPrincipalname -CompanyName 'LIND3N'
+Set-AzureADUser -ObjectId $Member.UserPrincipalname -CompanyName 'Fabrikam'
 }
 
 #Rollback: Remove-AzureADUserExtension -ObjectId -ObjectId $Member.UserPrincipalname -ExtensionName "CompanyName"
