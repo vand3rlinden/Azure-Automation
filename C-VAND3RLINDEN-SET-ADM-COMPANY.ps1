@@ -1,24 +1,15 @@
-#This script can be used to autofill an attribute based on displayname. For example, your external admin accounts.
+#This script can be used to autofill an attribute based on displayname. For example, your internal admin accounts.
 
-#Connect Azure AD with Runbook:
+#Connect Azure AD
 . .\Login-AzureAD.ps1
 
-### CompanyName: Contoso
+### CompanyName: Your CompanyName
 #Get the users
-$Members = Get-AzureADUser -All $true | Where-Object {$_.DisplayName -like "*(Contoso Admin)"}
+$Members = Get-AzureADUser -All $true | Where-Object {$_.DisplayName -like "*(Admin Account)"}
 
 #Set CompanyName
 ForEach ($Member in $Members){
-Set-AzureADUser -ObjectId $Member.UserPrincipalname -CompanyName 'Contoso'
+    Set-AzureADUser -ObjectId $Member.UserPrincipalname -CompanyName 'Your CompanyName' #Set
+    #Get-AzureADUser -ObjectId $Member.UserPrincipalname | Select-Object UserPrincipalname #Test
+    #Remove-AzureADUserExtension -ObjectId -ObjectId $Member.UserPrincipalname -ExtensionName "CompanyName" #Rollback
 }
-
-### CompanyName: Fabrikam
-#Get the users
-$Members = Get-AzureADUser -All $true | Where-Object {$_.DisplayName -like "*(Fabrikam Admin)"}
-
-#Set CompanyName
-ForEach ($Member in $Members){
-Set-AzureADUser -ObjectId $Member.UserPrincipalname -CompanyName 'Fabrikam'
-}
-
-#Rollback: Remove-AzureADUserExtension -ObjectId -ObjectId $Member.UserPrincipalname -ExtensionName "CompanyName"
