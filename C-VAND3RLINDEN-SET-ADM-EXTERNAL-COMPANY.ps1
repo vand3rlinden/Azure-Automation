@@ -4,8 +4,11 @@ Command in: Set-AzureADUser and command out: Get-AzureADUser with the $Export va
 Command in: Set-AzureADUser and command out: Remove-AzureADUserExtension to roll back the script
 #>
 
+#Connect Azure AD with Runbook:
+. .\Login-AzureAD.ps1
+
 #List external companies
-$Companies = @('Contoso','Wortell')
+$Companies = @('Contoso','Fabrikram')
 
 #Get accounts with a DisplayName like (CompanyName Admin)
 #$Export = foreach ($Company in $Companies){ #Comment out for: Test
