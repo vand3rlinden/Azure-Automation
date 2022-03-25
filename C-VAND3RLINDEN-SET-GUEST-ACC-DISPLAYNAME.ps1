@@ -4,6 +4,9 @@ for connected organizations. This script will obtain all guest users of the comp
 Current Displayname, like 'Firstname Lastname (CompanyName)'
 #>
 
+#Connect Azure AD
+. .\Login-AzureAD.ps1
+
 #Guest CompanyNames
 $Companies = @('Outlook','Wortell')
 
