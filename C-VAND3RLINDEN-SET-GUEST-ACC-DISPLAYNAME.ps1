@@ -16,8 +16,8 @@ Foreach ($Company in $Companies){
     $Users = Get-AzureADUser -All $true | Where-Object {($_.UserPrincipalName -like "*$Company.*") -and ($_.DisplayName -notlike "*($Company)")}
 
     foreach ($User in $Users){
-        $DisplayName = $Users.DisplayName + " " + "($Company)"
-        Set-AzureADUser -ObjectId $Users.ObjectId -Displayname $DisplayName
+        $DisplayName = $User.DisplayName + " " + "($Company)"
+        Set-AzureADUser -ObjectId $User.ObjectId -Displayname $DisplayName
         #Get-AzureADUser -ObjectId $Users.ObjectId | Select-Object UserPrincipalName,DisplayName #Comment out for: Test
     }
     
