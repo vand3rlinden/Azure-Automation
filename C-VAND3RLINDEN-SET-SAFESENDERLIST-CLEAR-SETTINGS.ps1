@@ -1,4 +1,6 @@
-<#
+<# 
+    This script will clear all settings users have been set in the junk email setting.
+
     Junk email settings are availible in OWA by going to Settings >> View all outlook settings >> Mail >> Junk email
     ContactsTrusted:            checked out Trust email from my contacts
     TrustedListsOnly:           checkd out Only trust email from addresses in my Safe sender and domain list
