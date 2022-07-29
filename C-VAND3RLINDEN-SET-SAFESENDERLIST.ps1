@@ -1,11 +1,14 @@
+<#
+    Junk email settings are availible in OWA by going to Settings >> View all outlook settings >> Mail >> Junk email
+    ContactsTrusted:            checked out Trust email from my contacts
+    TrustedListsOnly:           checkd out Only trust email from addresses in my Safe sender and domain list
+    TrustedSendersAndDomains:   clears Safe senders and domain list
+    BlockedSendersAndDomains:   clears Blocked senders and domain list
+#>
+
 #Connecting EXO
 . .\Login-EXO.ps1
 
-#Clear TrustedSendersAndDomains and BlockedSendersAndDomains
-Set-MailboxJunkEmailConfiguration "user@domain.com" -TrustedSendersAndDomains $Null -BlockedSendersAndDomains $Null
+#Clear MailboxJunkEmailConfiguration
+Get-Mailbox -ResultSize unlimited | Set-MailboxJunkEmailConfiguration -ContactsTrusted $false -TrustedListsOnly $false -TrustedSendersAndDomains $Null -BlockedSendersAndDomains $Null
 
-#Turn off ContactsTrusted
-Set-MailboxJunkEmailConfiguration "user@domain.com" -ContactsTrusted $false
-
-#Turn off TrustedListsOnly 
-Set-MailboxJunkEmailConfiguration "user@domain.com" -ContactsTrusted $false
